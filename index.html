@@ -27,7 +27,7 @@
             position: relative;
             width: 90vw;
             max-width: 400px;
-            height: 350px;
+            height: 420px;
             background: white;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -128,26 +128,80 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             background: #fff0f5;
             z-index: 5;
-          
         }
 
         .wish-screen h1 {
             color: #ff477e;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             animation: celebrate 0.5s ease-out alternate infinite;
         }
 
         .wish-screen p {
             color: #4a4a4a;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            line-height: 1.5;
-            margin: 0;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+        }
+
+        /* Video Preview Panel Styling */
+        .video-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+
+        .video-link:hover {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 140px;
+            height: 90px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(255, 71, 126, 0.2);
+            border: 3px solid #ffb3c1;
+            background-color: #ffe6e6;
+            margin-bottom: 8px;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.85);
+            color: #ff477e;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            padding-left: 3px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .video-text {
+            color: #ff477e;
+            font-size: 0.9rem;
+            font-weight: bold;
         }
 
         /* Animation mechanics for sliding open */
@@ -187,7 +241,6 @@
 
     <audio id="bg-music" loop>
         <source src="https://github.com/pasidhu89/birthday-music/raw/refs/heads/main/Happy%20birthday%20to%20you%20funny%20%20.%20.%20.%20.%20.%20..mp3" type="audio/mpeg">
-                     
     </audio>
 
     <div class="interactive-container" id="card-container">
@@ -200,6 +253,15 @@
             <div class="wish-screen">
                 <h1>Happy Birthday! 🎂</h1>
                 <p>Happy b day baby boo , i love you tooooo manika, ummmmmmmmmmmmmh 💋</p>
+                
+                <a href="https://drive.google.com/file/d/1n_wJZT4KI7GcbQz7frRQ6ee8XO0-9ojj/view?usp=sharing" target="_blank" class="video-link">
+                    <div class="video-thumbnail">
+                        <img src="https://raw.githubusercontent.com/pasidhu89/birthday-music/541f2f0ec3cf44364d708e6ae117294aa214259b/preview.PNG" alt="Video Preview">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <span class="video-text">Click to watch a special video! 🎥</span>
+                </a>
+
             </div>
 
             <div class="door door-left">
