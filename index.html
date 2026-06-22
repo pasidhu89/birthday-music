@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe6e6, #e8f0fe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fluid Main Card Container */
+        .interactive-container {
+            position: relative;
+            width: 90vw;
+            max-width: 400px;
+            height: 350px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Fixed Header */
+        .card-header {
+            width: 100%;
+            padding: 35px 20px 10px 20px;
+            text-align: center;
+            background: white;
+            z-index: 25;
+        }
+
+        .question-text {
+            color: #ff6b6b;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Interactive Doors Area */
+        .doors-wrapper {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Individual Doors */
+        .door {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 20;
+        }
+
+        .door-left {
+            left: 0;
+            border-right: 1px dashed #ffb3c1;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+
+        .door-right {
+            right: 0;
+            border-left: 1px dashed #ffb3c1;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+
+        /* Buttons Layout */
+        .btn {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease;
+        }
+
+        #yes-btn {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        #yes-btn:hover {
+            transform: scale(1.05);
+            background-color: #ff5252;
+        }
+
+        #no-btn {
+            background-color: #f0f0f0;
+            color: #555;
+            z-index: 100;
+            transition: left 0.15s ease-out, top 0.15s ease-out; 
+        }
+
+        /* Hidden Birthday Wish Area */
+        .wish-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            background: #fff0f5;
+            z-index: 5;
+          
+        }
+
+        .wish-screen h1 {
+            color: #ff477e;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            animation: celebrate 0.5s ease-out alternate infinite;
+        }
+
+        .wish-screen p {
+            color: #4a4a4a;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Animation mechanics for sliding open */
+        .interactive-container.open .door-left {
+            transform: translateX(-100%);
+        }
+
+        .interactive-container.open .door-right {
+            transform: translateX(100%);
+        }
+
+        /* Background Art Elements */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff8ab4;
+            bottom: -50px;
+            animation: floatUp 6s infinite linear;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://github.com/pasidhu89/birthday-music/raw/refs/heads/main/Happy%20birthday%20to%20you%20funny%20%20.%20.%20.%20.%20.%20..mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="interactive-container" id="card-container">
+        
+        <div class="card-header" id="card-header">
+            <h2 class="question-text">Do you still love me?</h2>
+        </div>
+
+        <div class="doors-wrapper">
+            <div class="wish-screen">
+                <h1>Happy Birthday! 🎂</h1>
+                <p>Happy b day baby boo , i love you tooooo manika, ummmmmmmmmmmmmh 💋</p>
+            </div>
+
+            <div class="door door-left">
+                <button class="btn" id="yes-btn">Yes</button>
+            </div>
+
+            <div class="door door-right">
+                <button class="btn" id="no-btn">No</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="heart" style="left: 10%; animation-delay: 0s; font-size: 30px;">🌸</div>
+    <div class="heart" style="left: 25%; animation-delay: 2s;">✨</div>
+    <div class="heart" style="left: 40%; animation-delay: 4s; font-size: 35px;">❤️</div>
+    <div class="heart" style="left: 60%; animation-delay: 1s;">✨</div>
+    <div class="heart" style="left: 75%; animation-delay: 3s; font-size: 28px;">🌸</div>
+    <div class="heart" style="left: 90%; animation-delay: 5s;">❤️</div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const container = document.getElementById('card-container');
+        const header = document.getElementById('card-header');
+        
+        const bgMusic = document.getElementById('bg-music');
+
+        function flyAway() {
+            if (noBtn.parentElement !== document.body) {
+                document.body.appendChild(noBtn);
+            }
+
+            const padding = 30;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        }
+
+        noBtn.addEventListener('mouseover', flyAway);
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault(); 
+            flyAway();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            container.classList.add('open');
+            noBtn.style.display = 'none';
+            header.style.visibility = 'hidden'; 
+            
+            bgMusic.play().catch(function(error) {
+                console.log("Audio playback blocked by browser settings:", error);
+            });
+        });
+    </script>
+
+</body>
+</html>
